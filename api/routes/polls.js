@@ -76,6 +76,7 @@ router.post(
       });
 
       await poll.save();
+      req.io.emit('new-poll', poll);
       res.status(201).json(poll);
     } catch (e) {
       console.error(e);

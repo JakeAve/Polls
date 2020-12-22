@@ -6,9 +6,6 @@ const app = express();
 
 require('./db/connectDB')();
 
-app.use(express.json({ extended: false }));
-app.use('/api', require('./api'));
-
 if (process.env.NODE_ENV !== 'production') {
   const allowCrossDomain = (req, res) => {
     res.header('Access-Control-Allow-Origin', '*');
@@ -28,10 +25,13 @@ const server = app.listen(port, () =>
   console.log(`1: Server has started on ${port}`),
 );
 
-const io = socketio(server, { cors: { origin: '*' } });
+const io = socketio(server, { cors: { origin: '*' }, path: '/socket' });
 
-io.on('connect', (socket) => {
-  console.log(`Client connected to socket`);
-  socket.emit('start', 'Socket has started');
-  socket.on('join', () => console.log('User has joined'));
+app.use(express.json({ extended: false }));
+app.use((req, res, next) => {
+  req.io = io;
+  next();
 });
+app.use('/api', require('./api'));
+
+module.exports = { io, server };

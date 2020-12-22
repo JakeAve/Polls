@@ -13,6 +13,7 @@ router.post('/:pollId/:optionId', async (req, res) => {
     option.votes++;
 
     await poll.save();
+    req.io.emit('vote', poll);
     res.json(poll);
   } catch (e) {
     console.error(e);

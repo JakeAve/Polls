@@ -1,10 +1,9 @@
 import './styles.scss';
 import { useEffect, useState } from 'react';
 import { useSocket } from '../../contexts/socketContext';
+import getPolls from '../../actions/getPolls';
 
 import PollList from '../../components/PollList/PollList';
-
-import getPolls from '../../actions/getPolls';
 
 const sumVotes = (options) => {
   return options.reduce((acc, { votes }) => acc + Number(votes), 0);
@@ -15,12 +14,18 @@ export default function Home() {
 
   const socket = useSocket();
   useEffect(() => {
-    socket.on('start', (data) => {
-      console.log({ data });
+    socket.on('vote', (updatedPoll) => {
+      setPolls((p) => {
+        const index = p.findIndex(({ _id }) => _id === updatedPoll._id);
+        if (index >= 0) p.splice(index, 1, updatedPoll);
+        return [...p];
+      });
     });
-    socket.emit('join');
+    socket.on('new-poll', (newPoll) => {
+      setPolls((p) => [...p, newPoll]);
+    });
     return () => {
-      socket.off('start');
+      socket.off('vote');
     };
   }, [socket]);
 
