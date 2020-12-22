@@ -34,8 +34,16 @@ h6 {
   color: var(--white);
 }
 
-button {
+main {
+  width: 90vw;
+  margin: auto;
+}
+
+button,
+.button,
+input[type='submit'] {
   font-size: 1rem;
+  text-decoration: none;
   border: none;
   border-radius: 8px;
   color: var(--white);
@@ -80,11 +88,17 @@ textarea {
     border-bottom: 3px solid var(--accent-light);
     background: var(--background-dark);
   }
+  &::placeholder {
+    color: var(--accent-light);
+  }
 
   &.fore {
     border-color: var(--fore);
     &:focus {
       border-color: var(--fore-light);
+    }
+    &::placeholder {
+      color: var(--fore-light);
     }
   }
 }
@@ -94,7 +108,7 @@ label {
   font-size: 1rem;
 }
 
-a {
+a:not(.button) {
   color: var(--fore);
   font-weight: 500;
   text-decoration: none;

@@ -1,0 +1,28 @@
+.poll-summary {
+  display: grid;
+  gap: 0.5rem;
+  background: var(--background-dark);
+  padding: 1rem;
+  border-radius: 4px;
+  color: var(--light) !important;
+  &:focus,
+  &:hover {
+    color: var(--fore) !important;
+  }
+  &::after {
+    content: none !important;
+  }
+
+  .question {
+    text-decoration: underline;
+  }
+
+  .options {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .time-stamp {
+    font-style: italic;
+  }
+}

@@ -1,0 +1,33 @@
+.new-poll {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  & .question {
+    height: 5rem;
+  }
+  & textarea {
+    resize: none;
+  }
+  & input[type='submit'] {
+    grid-column: 1 / 3;
+    width: 15rem;
+    justify-self: center;
+  }
+  & [required] {
+    position: relative;
+  }
+  & [required]::after {
+    content: '*';
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: var(--accent);
+    font-size: 1rem;
+  }
+}
+
+.input-container {
+  display: grid;
+  align-content: flex-start;
+  gap: 1rem;
+}

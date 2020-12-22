@@ -1,0 +1,26 @@
+.results {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+
+  & .text {
+    display: grid;
+    gap: 1rem;
+    justify-content: center;
+  }
+  & .result {
+    border-radius: 4px;
+    background: var(--light);
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    justify-content: center;
+    place-items: center;
+    gap: 1rem;
+    padding: 1rem 5rem;
+    font-size: 1.1rem;
+  }
+
+  & .votes {
+    font-weight: bold;
+  }
+}

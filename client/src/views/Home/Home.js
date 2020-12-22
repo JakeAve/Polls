@@ -1,8 +1,14 @@
-import { useEffect } from 'react';
-import { useSocket } from '../../contexts/socketContext';
 import './styles.scss';
+import { useEffect, useState } from 'react';
+import { useSocket } from '../../contexts/socketContext';
+
+import PollList from '../../components/PollList/PollList';
+
+import getPolls from '../../actions/getPolls';
 
 export default function Home() {
+  const [polls, setPolls] = useState([]);
+
   const socket = useSocket();
   useEffect(() => {
     socket.on('start', (data) => {
@@ -12,6 +18,18 @@ export default function Home() {
     return () => {
       socket.off('start');
     };
-  });
-  return <main></main>;
+  }, [socket]);
+
+  useEffect(() => {
+    getPolls().then((newPolls) => setPolls(newPolls));
+  }, []);
+
+  // const topPolls = polls.sort({});
+
+  return (
+    <main className="dashboard">
+      <PollList polls={polls} />
+      <PollList polls={polls} />
+    </main>
+  );
 }
