@@ -7,7 +7,7 @@ export default function Results(props) {
   const { pollProps } = props;
   const { options } = pollProps;
   const content = options.map(({ text, votes, _id }) => (
-    <div class="result" key={_id}>
+    <div className="result" key={_id}>
       <div>{text}</div>
       <div className="votes">
         {votes} {parseInt(votes) === 1 ? 'vote' : 'votes'}

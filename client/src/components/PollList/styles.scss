@@ -4,4 +4,10 @@
   background: var(--light);
   padding: 1.5rem;
   border-radius: 4px;
+  align-content: flex-start;
+
+  & h2 {
+    color: var(--background-dark);
+    text-align: center;
+  }
 }
