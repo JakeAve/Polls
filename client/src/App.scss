@@ -1,0 +1,121 @@
+:root {
+  --sans-serif: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+    'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  --serif: 'Georgia', serif;
+  --background: #2b2d42;
+  --background-dark: #222435;
+  --background-light: #373953;
+  --fore: #f5759d;
+  --fore-dark: #c45b7c;
+  --fore-light: #ff85ac;
+  --accent: #f7e733;
+  --accent-dark: #c7ba28;
+  --accent-light: #fdf16b;
+  --light: #f7f7f9;
+  --white: #ffffff;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+}
+
+* {
+  font-family: var(--sans-serif);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--white);
+}
+
+button {
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  color: var(--white);
+  background: var(--fore);
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  &:hover,
+  &:focus {
+    background: var(--fore-dark);
+    outline: none;
+  }
+  &:active {
+    background: var(--fore-light);
+  }
+
+  &.accent {
+    background: var(--accent);
+    color: var(--dark);
+    &:hover,
+    &:focus {
+      background: var(--accent-light);
+    }
+    &:active {
+      background: var(--accent-dark);
+    }
+  }
+}
+
+input,
+textarea {
+  font-size: 1rem;
+  background: var(--background);
+  border: none;
+  border-bottom: 2px solid var(--accent);
+  color: var(--light);
+  caret-color: currentColor;
+  padding: 0.3rem 0.5rem;
+  letter-spacing: 0.1rem;
+  &:focus {
+    outline: none;
+    border-bottom: 3px solid var(--accent-light);
+    background: var(--background-dark);
+  }
+
+  &.fore {
+    border-color: var(--fore);
+    &:focus {
+      border-color: var(--fore-light);
+    }
+  }
+}
+
+label {
+  color: var(--white);
+  font-size: 1rem;
+}
+
+a {
+  color: var(--fore);
+  font-weight: 500;
+  text-decoration: none;
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    height: 2px;
+    background: currentColor;
+    left: 0;
+    width: 0;
+    transition: 0.1s ease-in;
+  }
+  &:hover,
+  &:focus {
+    &::after {
+      width: 100%;
+    }
+  }
+  &:active {
+    color: var(--fore-light);
+  }
+}
