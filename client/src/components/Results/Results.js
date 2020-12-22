@@ -36,12 +36,7 @@ export default function Results(props) {
   return (
     <section className="results">
       <div>
-        <Doughnut
-          width={'30%'}
-          height={'50%'}
-          options={graphOptions}
-          data={graphData}
-        />
+        <Doughnut options={graphOptions} data={graphData} />
       </div>
       <div className="text">{content}</div>
     </section>

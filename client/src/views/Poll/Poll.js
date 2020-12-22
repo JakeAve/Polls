@@ -31,7 +31,7 @@ export default function Poll() {
 
   return (
     <main className="poll-view">
-      <h1>{pollProps ? <h1>{pollProps.question}</h1> : ''}</h1>
+      {pollProps ? <h1>{pollProps.question}</h1> : ''}
       {component}
     </main>
   );
